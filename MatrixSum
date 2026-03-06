@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class MatrixSum {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the dimension of the square matrix: ");
+        int n = input.nextInt();
+
+        int[][] matrix = new int[n][n];
+
+        System.out.println("Enter the elements of the matrix:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = input.nextInt();
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            int rowSum = 0;
+            for (int j = 0; j < n; j++) {
+                rowSum += matrix[i][j];
+            }
+            System.out.println("Sum of row " + (i + 1) + ": " + rowSum);
+        }
+
+        for (int j = 0; j < n; j++) {
+            int colSum = 0;
+            for (int i = 0; i < n; i++) {
+                colSum += matrix[i][j];
+            }
+            System.out.println("Sum of column " + (j + 1) + ": " + colSum);
+        }
+
+        int mainDiagonalSum = 0;
+        int reverseDiagonalSum = 0;
+
+        for (int i = 0; i < n; i++) {
+            mainDiagonalSum += matrix[i][i];
+            reverseDiagonalSum += matrix[i][n - 1 - i];
+        }
+
+        System.out.println("Sum of main diagonal: " + mainDiagonalSum);
+        System.out.println("Sum of reverse diagonal: " + reverseDiagonalSum);
+        
+        input.close();
+    }
+}
